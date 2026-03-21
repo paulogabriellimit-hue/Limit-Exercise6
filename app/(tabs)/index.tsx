@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, } from "react-native";
 import { ThemeContext } from "../ThemeContext";
 import { darkTheme, lightTheme } from "../theme";
 
@@ -16,11 +16,25 @@ export default function Index() {
         Current Theme: {theme}
       </Text>
 
-      <Button
-        title="Toggle Theme"
+      {/* TOGGLE BUTTON */}
+      <TouchableOpacity
         onPress={toggleTheme}
-        color={currentTheme.button}
-      />
+        style={[
+          styles.button,
+          {
+            backgroundColor: theme === "light" ? "#222" : "#ddd",
+          },
+        ]}
+      >
+        <Text
+          style={{
+            color: theme === "light" ? "#fff" : "#000",
+            fontWeight: "bold",
+          }}
+        >
+          {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -34,5 +48,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 22,
     marginBottom: 20,
+  },
+  button: {
+    marginTop: 20,
+    padding: 12,
+    borderRadius: 8,
+    alignItems: "center",
   },
 });
