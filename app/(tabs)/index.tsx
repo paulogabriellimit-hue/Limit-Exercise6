@@ -16,7 +16,6 @@ export default function Index() {
         Current Theme: {theme}
       </Text>
 
-      {/* TOGGLE BUTTON */}
       <TouchableOpacity
         onPress={toggleTheme}
         style={[
